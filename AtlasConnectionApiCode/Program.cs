@@ -8,9 +8,14 @@ builder.Services.Configure<MongoDbSetting>(builder.Configuration.GetSection("Mon
 
 // Add services to the container.
 builder.Services.AddSingleton<UserDataAccess>();
-builder.Services.AddSingleton<IUserService, UserService>();
+builder.Services.AddSingleton<CommonDataAccess>();
 
-builder.Services.AddAutoMapper(typeof(AutoMapperUserModelProfile));
+builder.Services.AddSingleton<IUserService, UserService>();
+builder.Services.AddSingleton<ICommonService, CommonService>();
+
+builder.Services.AddAutoMapper(
+    typeof(AutoMapperUserModelProfile), 
+    typeof(AutoMapperCommonModelProfile));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -9,12 +9,6 @@ public class AutoMapperUserModelProfile : Profile
     public AutoMapperUserModelProfile()
     {
         CreateMap<SaveUserDtoRequest, UserModel>()
-            //.ForMember(dest => dest.Id, opt => opt.MapFrom(src => ObjectId.Parse(src.Id)))
-            //.ForMember(dest => dest.Id, opt =>
-            //{
-            //    opt.PreCondition(src => string.IsNullOrEmpty(src.Id));
-            //    opt.MapFrom(_ => ObjectId.GenerateNewId());
-            //})
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => string.IsNullOrEmpty(src.Id) ? ObjectId.GenerateNewId() : ObjectId.Parse(src.Id)))
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
             .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
