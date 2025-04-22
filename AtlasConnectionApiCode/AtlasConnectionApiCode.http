@@ -1,0 +1,6 @@
+@AtlasConnectionApiCode_HostAddress = http://localhost:5008
+
+POST {{AtlasConnectionApiCode_HostAddress}}/User/Set
+Accept: application/json
+###
+

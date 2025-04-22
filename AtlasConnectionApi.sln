@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtlasConnectionApiCode", "AtlasConnectionApiCode\AtlasConnectionApiCode.csproj", "{B3E8C045-8AFC-4A48-8AE2-38E3F6EA33BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtlasConnectionApiTest", "AtlasConnectionApiTest\AtlasConnectionApiTest.csproj", "{29400DAD-1878-4731-AC42-F12F997626D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B3E8C045-8AFC-4A48-8AE2-38E3F6EA33BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3E8C045-8AFC-4A48-8AE2-38E3F6EA33BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3E8C045-8AFC-4A48-8AE2-38E3F6EA33BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3E8C045-8AFC-4A48-8AE2-38E3F6EA33BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29400DAD-1878-4731-AC42-F12F997626D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29400DAD-1878-4731-AC42-F12F997626D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29400DAD-1878-4731-AC42-F12F997626D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29400DAD-1878-4731-AC42-F12F997626D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E69D24C9-9B5E-4A9F-972C-07FE9DB8A35B}
+	EndGlobalSection
+EndGlobal
