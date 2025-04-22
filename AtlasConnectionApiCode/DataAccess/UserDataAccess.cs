@@ -21,8 +21,6 @@ namespace AtlasConnectionApiCode.DataAccess
         public async Task CreateAsync(UserModel user) => await _userCollection.InsertOneAsync(user);
         public async Task UpdateAsync(ObjectId id, UserModel user) => await _userCollection.ReplaceOneAsync(x => x.Id == id, user);
         public async Task RemoveAsync(ObjectId id) => await _userCollection.DeleteOneAsync(x => x.Id == id);
-
-
     }
 
 

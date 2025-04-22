@@ -10,7 +10,7 @@ builder.Services.Configure<MongoDbSetting>(builder.Configuration.GetSection("Mon
 builder.Services.AddSingleton<UserDataAccess>();
 builder.Services.AddSingleton<IUserService, UserService>();
 
-builder.Services.AddAutoMapper(typeof(AutoMapperConfigurationProfile));
+builder.Services.AddAutoMapper(typeof(AutoMapperUserModelProfile));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

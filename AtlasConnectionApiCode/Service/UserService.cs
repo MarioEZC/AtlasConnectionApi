@@ -24,13 +24,13 @@ namespace AtlasConnectionApiCode.Service
             {
                 var model = _mapper.Map<UserModel>(request);
 
-                if (request.Id == ObjectId.Empty || request.Id == null)
+                if (string.IsNullOrEmpty(request.Id))
                 {
                     await _dataAccess.CreateAsync(model);
                 }
                 else
                 {
-
+                    await _dataAccess.UpdateAsync(model.Id, model);
                 }
                 response.Success = true;
             }

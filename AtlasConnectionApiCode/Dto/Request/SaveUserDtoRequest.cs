@@ -5,7 +5,7 @@ namespace AtlasConnectionApiCode.Dto.Request
 {
     public class SaveUserDtoRequest
     {
-        public ObjectId? Id { get; set; } = ObjectId.Empty;
+        public string? Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public DateOnly BirthDate { get; set; }
