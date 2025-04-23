@@ -15,11 +15,12 @@ namespace AtlasConnectionApiCode.Controllers
 
         [HttpGet]
         [Route("Get")]
-        public async Task<GenericResponse<List<CommonTypeDtoResponse>>> GetCommon()
+        public async Task<ActionResult<GenericResponse<List<CommonTypeDtoResponse>>>> GetCommon()
         {
             var response = await _commonService.ListAll();
 
-            return response;
+            if(response.Success) return Ok(response);
+            else return BadRequest(response);
         }
     }
 }

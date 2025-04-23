@@ -3,6 +3,7 @@ using AtlasConnectionApiCode.Dto;
 using AtlasConnectionApiCode.Dto.Response;
 using AtlasConnectionApiCode.Model;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AtlasConnectionApiCode.Service
 {
@@ -10,7 +11,7 @@ namespace AtlasConnectionApiCode.Service
     {
         Task<GenericResponse<List<CommonTypeDtoResponse>>> ListAll();
     }
-    public class CommonService(CommonDataAccess dataAccess, IMapper mapper) : ICommonService
+    public class CommonService([FromServices] CommonDataAccess dataAccess, [FromServices] IMapper mapper) : ICommonService
     {
         private readonly CommonDataAccess _dataAccess = dataAccess;
         private readonly IMapper _mapper = mapper;

@@ -14,11 +14,32 @@ namespace AtlasConnectionApiCode.Controllers
 
         [HttpPost]
         [Route("Set")]
-        public async Task<GenericResponse> SetUser(SaveUserDtoRequest request)
+        public async Task<ActionResult<GenericResponse>> SetUser(SaveUserDtoRequest request)
         {
             var response = await _userService.SaveUser(request);
 
-            return response;
+            if (response.Success) return Ok(response);
+            else return BadRequest(response);
+        }
+
+        [HttpGet]
+        [Route("Get")]
+        public async Task<ActionResult<GenericResponse>> GetUser(FindUserDtoRequest request)
+        {
+            var response = await _userService.FindUser(request);
+
+            if (response.Success) return Ok(response);
+            else return BadRequest(response);
+        }
+
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<ActionResult<GenericResponse>> DeleteUser(DeleteUserDtoRequest request)
+        {
+            var response = await _userService.DeleteUser(request);
+
+            if (response.Success) return Ok(response);
+            else return BadRequest(response);
         }
     }
 }

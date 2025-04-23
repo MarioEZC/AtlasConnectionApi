@@ -1,4 +1,5 @@
 ﻿using AtlasConnectionApiCode.Dto.Request;
+using AtlasConnectionApiCode.Dto.Response;
 using AtlasConnectionApiCode.Model;
 using AutoMapper;
 using MongoDB.Bson;
@@ -26,5 +27,10 @@ public class AutoMapperUserModelProfile : Profile
             .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City))
             .ForMember(dest => dest.DirectionType, opt => opt.MapFrom(src => src.DirectionType));
 
+        CreateMap<UserModel, FindUserDtoResponse>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id.ToString()))
+            .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => $"{src.Name} {src.LastName}"))
+            .ForMember(dest => dest.PhoneCount, opt => opt.MapFrom(src => src.PhoneNumbers.Count()))
+            .ForMember(dest => dest.DirectionCount, opt => opt.MapFrom(src => src.Directions.Count()));
     }
 }

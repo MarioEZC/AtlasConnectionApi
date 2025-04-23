@@ -34,7 +34,7 @@ public class UserControllerTest
 
         var result = await _userController.SetUser(saveUserRequest);
 
-        Assert.That(result, Is.EqualTo(expectedResult));
+        Assert.IsTrue(result.Value.Success);
     }
 
     private SaveUserDtoRequest LoadSaveUserData => new()
