@@ -3,7 +3,9 @@ using AtlasConnectionApiCode.Dto;
 using AtlasConnectionApiCode.Dto.Request;
 using AtlasConnectionApiCode.Dto.Response;
 using AtlasConnectionApiCode.Model;
+using AtlasConnectionApiCode.Validation;
 using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 
@@ -28,6 +30,15 @@ namespace AtlasConnectionApiCode.Service
             var response = new GenericResponse();
             try
             {
+                var validator = new SaveUserDtoRequestValidation();
+                var validateRequest = validator.Validate(request);
+                if (!validateRequest.IsValid)
+                {
+                    response.Success = false;
+                    response.Message = $"{validateRequest.Errors[0].ErrorCode} - {validateRequest.Errors[0].ErrorMessage}";
+                    return response;
+                }
+
                 var model = _mapper.Map<UserModel>(request);
 
                 if (string.IsNullOrEmpty(request.Id))
@@ -54,6 +65,15 @@ namespace AtlasConnectionApiCode.Service
 
             try
             {
+                var validator = new FindUserDtoRequestValidation();
+                var validateRequest = validator.Validate(request);
+                if (!validateRequest.IsValid)
+                {
+                    response.Success = false;
+                    response.Message = $"{validateRequest.Errors[0].ErrorCode} - {validateRequest.Errors[0].ErrorMessage}";
+                    return response;
+                }
+
                 if (string.IsNullOrEmpty(request.Id))
                 {
                     var data = await _dataAccess.GetAsync();
@@ -82,6 +102,15 @@ namespace AtlasConnectionApiCode.Service
 
             try
             {
+                var validator = new DeleteUserDtoRequestValidation();
+                var validateRequest = validator.Validate(request);
+                if (!validateRequest.IsValid)
+                {
+                    response.Success = false;
+                    response.Message = $"{validateRequest.Errors[0].ErrorCode} - {validateRequest.Errors[0].ErrorMessage}";
+                    return response;
+                }
+
                 await _dataAccess.RemoveAsync(ObjectId.Parse(request.Id));
                 response.Success = true;
             }

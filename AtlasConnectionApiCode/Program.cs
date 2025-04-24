@@ -1,6 +1,7 @@
 using AtlasConnectionApiCode.DataAccess;
 using AtlasConnectionApiCode.Mapper;
 using AtlasConnectionApiCode.Service;
+using AtlasConnectionApiCode.Validation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddSingleton<ICommonService, CommonService>();
 builder.Services.AddAutoMapper(
     typeof(AutoMapperUserModelProfile), 
     typeof(AutoMapperCommonModelProfile));
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
