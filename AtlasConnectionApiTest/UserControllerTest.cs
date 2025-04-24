@@ -39,6 +39,11 @@ public class UserControllerTest
 
     private SaveUserDtoRequest LoadSaveUserData => new()
     {   
-        
+        Id = null,
+        Name = "Prueba",
+        LastName = "Prueba Lastname",
+        BirthDate = DateOnly.Parse(DateTime.Now.AddYears(-30).ToString()),
+        Directions = [],
+        PhoneNumbers = []
     };
 }

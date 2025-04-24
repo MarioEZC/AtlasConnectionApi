@@ -17,7 +17,7 @@ namespace AtlasConnectionApiCode.Validation
         private bool ValidateId(string? id)
         {
             if (string.IsNullOrEmpty(id)) return true;
-            else return id.Length != 24;
+            else return id.Length == 24;
         }
     }
 }

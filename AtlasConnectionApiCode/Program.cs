@@ -18,6 +18,9 @@ builder.Services.AddAutoMapper(
     typeof(AutoMapperUserModelProfile), 
     typeof(AutoMapperCommonModelProfile));
 
+builder.Services.AddSingleton<DeleteUserDtoRequestValidation>();
+builder.Services.AddSingleton<FindUserDtoRequestValidation>();
+builder.Services.AddSingleton<SaveUserDtoRequestValidation>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

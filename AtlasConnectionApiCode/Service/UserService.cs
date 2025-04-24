@@ -19,19 +19,25 @@ namespace AtlasConnectionApiCode.Service
 
     }
 
-    public class UserService([FromServices] UserDataAccess dataAccess, [FromServices] IMapper mapper) : IUserService
+    public class UserService(
+        [FromServices] UserDataAccess dataAccess, 
+        [FromServices] IMapper mapper,
+        [FromServices] SaveUserDtoRequestValidation saveUserDtoRequestValidation,
+        [FromServices] FindUserDtoRequestValidation findUserDtoRequestValidation,
+        [FromServices] DeleteUserDtoRequestValidation deleteUserDtoRequestValidation) : IUserService
     {
         private readonly UserDataAccess _dataAccess = dataAccess;
         private readonly IMapper _mapper = mapper;
-
+        private readonly SaveUserDtoRequestValidation _saveUserDtoRequestValidation = saveUserDtoRequestValidation;
+        private readonly FindUserDtoRequestValidation _findUserDtoRequestValidation = findUserDtoRequestValidation;
+        private readonly DeleteUserDtoRequestValidation _deleteUserDtoRequestValidation = deleteUserDtoRequestValidation;
 
         public async Task<GenericResponse> SaveUser(SaveUserDtoRequest request)
         {
             var response = new GenericResponse();
             try
             {
-                var validator = new SaveUserDtoRequestValidation();
-                var validateRequest = validator.Validate(request);
+                var validateRequest = _saveUserDtoRequestValidation.Validate(request);
                 if (!validateRequest.IsValid)
                 {
                     response.Success = false;
@@ -65,8 +71,7 @@ namespace AtlasConnectionApiCode.Service
 
             try
             {
-                var validator = new FindUserDtoRequestValidation();
-                var validateRequest = validator.Validate(request);
+                var validateRequest = _findUserDtoRequestValidation.Validate(request);
                 if (!validateRequest.IsValid)
                 {
                     response.Success = false;
@@ -102,8 +107,7 @@ namespace AtlasConnectionApiCode.Service
 
             try
             {
-                var validator = new DeleteUserDtoRequestValidation();
-                var validateRequest = validator.Validate(request);
+                var validateRequest = _deleteUserDtoRequestValidation.Validate(request);
                 if (!validateRequest.IsValid)
                 {
                     response.Success = false;
