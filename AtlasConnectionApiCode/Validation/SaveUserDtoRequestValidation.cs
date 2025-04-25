@@ -8,23 +8,21 @@ namespace AtlasConnectionApiCode.Validation
         public SaveUserDtoRequestValidation()
         {
             RuleFor(x => x.Id)
-                .NotEmpty()
-                .NotNull()
-                .Length(24)
+                .Must(ValidateId)
                 .WithErrorCode("E1001")
                 .WithMessage("Invalid Id, must have 24 characters");
 
             RuleFor(x => x.Name)
                 .NotEmpty()
                 .NotNull()
-                .Length(5,50)
+                .Length(5, 50)
                 .WithErrorCode("E1002")
                 .WithMessage("Invalid Name, length between 5 and 50 charcaters");
 
             RuleFor(x => x.LastName)
                 .NotEmpty()
                 .NotNull()
-                .Length(5,50)
+                .Length(5, 50)
                 .WithErrorCode("E1003")
                 .WithMessage("Invalid LastName, length between 5 and 50 charcaters");
 
@@ -33,6 +31,12 @@ namespace AtlasConnectionApiCode.Validation
 
             RuleForEach(x => x.Directions)
                 .SetValidator(new DirectionValidation());
+        }
+
+        private bool ValidateId(string? id)
+        {
+            if (string.IsNullOrEmpty(id)) return true;
+            else return id.Length == 24;
         }
     }
 
